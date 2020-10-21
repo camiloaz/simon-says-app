@@ -5,6 +5,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import logo from "./static/taptap2.png";
+var mqtt = require("mqtt");
+
+var client = mqtt.connect("ws://try:try@broker.shiftr.io", {
+  clientId: "mambochili",
+});
+
+client.on("connect", function () {
+  console.log("hola");
+});
+
+// client.on("message", function (topic, message) {
+//   // message is Buffer
+//   console.log(message.toString());
+//   client.end();
+// });
 
 const useStyles = makeStyles((theme) => ({
   playButton: {
@@ -36,6 +51,10 @@ function App() {
             variant="contained"
             color="secondary"
             className={classes.playButton}
+            onClick={() => {
+              client.publish("/mambo/chili/estudio6/seq", "0123");
+              console.log("published");
+            }}
           >
             Play
           </Button>
