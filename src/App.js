@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import logo from "./static/taptap2.png";
 var mqtt = require("mqtt");
 
-var client = mqtt.connect("ws://try:try@broker.shiftr.io", {
+var client = mqtt.connect("wss://try:try@broker.shiftr.io", {
   clientId: "mambochili",
 });
 
